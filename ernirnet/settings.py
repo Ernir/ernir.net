@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "homepage",
+    "photos",
 ]
 
 MIDDLEWARE = [
@@ -95,5 +96,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+
+# Media files
+# https://django-storages.readthedocs.io/en/latest/backends/dropbox.html
+DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
+DROPBOX_OAUTH2_TOKEN = os.environ.get("DROPBOX_OAUTH2_TOKEN")
 
 django_heroku.settings(locals())
