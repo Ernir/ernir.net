@@ -1,3 +1,4 @@
+aniso8601==7.0.0
 appdirs==1.4.4
 asgiref==3.2.7
 attrs==19.3.0
@@ -10,15 +11,21 @@ Django==3.0.6
 django-heroku==0.3.1
 django-storages==1.9.1
 dropbox==10.1.2
+graphene==2.1.8
+graphql-core==2.3.2
+graphql-relay==2.0.1
 idna==2.9
 pathspec==0.8.0
+Pillow==7.1.2
 pkg-resources==0.0.0
+promise==2.3
 psycopg2==2.8.5
 psycopg2-binary==2.8.5
 python-dotenv==0.13.0
 pytz==2020.1
 regex==2020.5.14
 requests==2.23.0
+Rx==1.6.1
 six==1.14.0
 sqlparse==0.3.1
 toml==0.10.1
