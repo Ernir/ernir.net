@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from homepage.redirects import vtp_redirect, blog_redirect
+
 urlpatterns = [
+    path("vanciantopsionics/", vtp_redirect),
+    path("blog/", blog_redirect),
     path("admin/", admin.site.urls),
 ]
