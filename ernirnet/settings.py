@@ -56,8 +56,8 @@ ROOT_URLCONF = "ernirnet.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
+        "DIRS": [os.path.join(BASE_DIR, "frontend", "build")],
+        "APP_DIRS": False,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -101,6 +101,9 @@ GRAPHENE = {"SCHEMA": "schema.schema"}
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "frontend", "build", "static"),
+]
 
 # Media files
 # https://django-storages.readthedocs.io/en/latest/backends/dropbox.html
