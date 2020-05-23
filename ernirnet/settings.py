@@ -25,8 +25,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY") or "not_at_all_secret"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ.get("DEBUG_MODE") or 1))
 
-ALLOWED_HOSTS = []
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,7 +39,23 @@ INSTALLED_APPS = [
     "photos",
 ]
 
-MIDDLEWARE = [
+# Special CORS handling for local development
+if DEBUG:
+    # The cors headers app can be last, but the middleware must be before CommonMiddleware.
+    INSTALLED_APPS += ["corsheaders"]
+    MIDDLEWARE = [
+        "corsheaders.middleware.CorsMiddleware",
+    ]
+    CORS_ORIGIN_WHITELIST = [
+        "http://localhost:3000",
+        "https://localhost:3000",
+        "http://127.0.0.1:3000",
+        "https://127.0.0.1:3000",
+    ]
+else:
+    MIDDLEWARE = []
+
+MIDDLEWARE += [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -57,7 +71,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [os.path.join(BASE_DIR, "frontend", "build")],
-        "APP_DIRS": False,
+        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -82,7 +96,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
