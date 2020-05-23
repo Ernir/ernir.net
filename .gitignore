@@ -1,6 +1,7 @@
 ernirnet.iml
 .idea
 .env
+.graphqlconfig
 
 venv
 

@@ -1,0 +1,22 @@
+schema {
+  query: Query
+}
+
+type GalleryType {
+  id: ID!
+  name: String!
+  photoSet: [PhotoType!]!
+}
+
+type PhotoType {
+  id: ID!
+  image: String!
+  description: String!
+  gallery: GalleryType!
+  url: String
+}
+
+type Query {
+  allGalleries: [GalleryType]
+  allPhotos: [PhotoType]
+}
