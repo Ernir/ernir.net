@@ -14,6 +14,8 @@ type PhotoType {
   description: String!
   gallery: GalleryType!
   url: String
+  width: Int
+  height: Int
 }
 
 type Query {

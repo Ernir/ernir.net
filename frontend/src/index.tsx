@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./components/App";
+import App from "./components/App/App";
 import * as serviceWorker from "./serviceWorker";
 
 import { ApolloClient } from "apollo-client";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
@@ -23,7 +24,18 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <Router>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/photos">Photos</Link>
+          </li>
+        </ul>
+        <hr />
+        <App />
+      </Router>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
