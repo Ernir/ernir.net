@@ -4,4 +4,8 @@ from django.contrib import admin
 from photos import models
 
 admin.site.register(models.Gallery)
-admin.site.register(models.Photo)
+
+
+@admin.register(models.Photo)
+class WordAdmin(admin.ModelAdmin):
+    readonly_fields = ("width", "height", "url")

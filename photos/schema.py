@@ -11,19 +11,6 @@ class GalleryType(DjangoObjectType):
 
 
 class PhotoType(DjangoObjectType):
-    url = graphene.String()
-    width = graphene.Int()
-    height = graphene.Int()
-
-    def resolve_url(self, info):
-        return self.image.url
-
-    def resolve_width(self, info):
-        return self.image.width
-
-    def resolve_height(self, info):
-        return self.image.height
-
     class Meta:
         model = Photo
 
