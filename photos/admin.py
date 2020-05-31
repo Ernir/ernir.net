@@ -3,9 +3,12 @@ from django.contrib import admin
 # Register your models here.
 from photos import models
 
-admin.site.register(models.Gallery)
+
+@admin.register(models.Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    readonly_fields = ("identifier",)
 
 
 @admin.register(models.Photo)
-class WordAdmin(admin.ModelAdmin):
+class PhotoAdmin(admin.ModelAdmin):
     readonly_fields = ("width", "height", "url")

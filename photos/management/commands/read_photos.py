@@ -10,7 +10,6 @@ from photos.models import Photo, Gallery
 
 
 class Command(BaseCommand):
-
     def __init__(self):
         super().__init__()
         self.galleries_prefix = "/galleries"
@@ -41,7 +40,8 @@ class Command(BaseCommand):
             gallery.save()
         existing_photos = {photo.image for photo in gallery.photo_set.all()}
         files_on_dropbox = {
-            f"{self.galleries_prefix}/{folder}/{filename}" for filename in self.get_files_of_folder(folder)
+            f"{self.galleries_prefix}/{folder}/{filename}"
+            for filename in self.get_files_of_folder(folder)
         }
         added = files_on_dropbox.difference(existing_photos)
         for path in added:

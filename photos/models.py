@@ -10,11 +10,13 @@ class Gallery(models.Model):
 
     name = models.CharField(max_length=200)
     identifier = models.CharField(max_length=200, unique=True)
+    start_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
+        ordering = ("-start_date", "identifier")
         verbose_name_plural = "Galleries"
 
 

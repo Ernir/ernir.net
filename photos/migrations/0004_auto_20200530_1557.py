@@ -6,12 +6,11 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('photos', '0003_gallery_identifier'),
+        ("photos", "0003_gallery_identifier"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='gallery',
-            options={'verbose_name_plural': 'Galleries'},
+            name="gallery", options={"verbose_name_plural": "Galleries"},
         ),
     ]
