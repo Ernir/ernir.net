@@ -1,3 +1,13 @@
 .home {
     text-align: center;
 }
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+nav dl dt {
+    display: inline;
+    padding: 1rem;
+}

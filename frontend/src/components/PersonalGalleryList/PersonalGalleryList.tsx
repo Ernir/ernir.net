@@ -1,42 +1,43 @@
 import React from "react";
+import "./PersonalGalleryList.css";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
-import "./PersonalGalleryList.css";
-import {
-  PersonalGallery,
-  PersonalGalleryProps,
-} from "../PersonalGallery/PersonalGallery";
+import { useRouteMatch } from "react-router";
+import { Link } from "react-router-dom";
 
 const GET_GALLERIES = gql`
   query {
     allGalleries {
       name
       identifier
-      photoSet {
-        url
-        width
-        height
-      }
     }
   }
 `;
 
 export const PersonalGalleryList: React.FC = () => {
   const { loading, error, data } = useQuery(GET_GALLERIES);
+  let { path } = useRouteMatch();
 
   if (loading) return <div>"Loading..."</div>;
   if (error) {
     return <div>Error! ${error.message}</div>;
   }
-  return data.allGalleries.map((gallery: PersonalGalleryProps) => {
-    return (
-      <div className="personal-galleries">
-        <PersonalGallery
-          identifier={gallery.identifier}
-          name={gallery.name}
-          photoSet={gallery.photoSet}
-        />
-      </div>
-    );
-  });
+  return (
+    <div className="personal-galleries">
+      <h2>
+        <Link to={"/photos"}>Photos</Link>{" "}
+      </h2>
+      <dl>
+        {data.allGalleries.map(
+          (gallery: { identifier: string; name: string }) => {
+            return (
+              <dt key={gallery.identifier}>
+                <Link to={`${path}/${gallery.identifier}`}>{gallery.name}</Link>
+              </dt>
+            );
+          }
+        )}
+      </dl>
+    </div>
+  );
 };

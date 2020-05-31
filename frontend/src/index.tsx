@@ -25,15 +25,6 @@ ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <Router>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/photos">Photos</Link>
-          </li>
-        </ul>
-        <hr />
         <App />
       </Router>
     </ApolloProvider>

@@ -23,6 +23,7 @@ type PhotoType {
 }
 
 type Query {
+  gallery(identifier: String): GalleryType
   allGalleries: [GalleryType]
   allPhotos: [PhotoType]
 }

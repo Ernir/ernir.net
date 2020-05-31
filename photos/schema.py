@@ -16,12 +16,16 @@ class PhotoType(DjangoObjectType):
 
 
 class Query(object):
+    gallery = graphene.Field(GalleryType, identifier=graphene.String())
     all_galleries = graphene.List(GalleryType)
     all_photos = graphene.List(PhotoType)
+
+    def resolve_gallery(self, info, **kwargs):
+        identifier = kwargs.get("identifier")
+        return Gallery.objects.get(identifier=identifier)
 
     def resolve_all_galleries(self, info, **kwargs):
         return Gallery.objects.all()
 
     def resolve_all_photos(self, info, **kwargs):
-        # We can easily optimize query count in the resolve method
         return Photo.objects.select_related("gallery").all()
