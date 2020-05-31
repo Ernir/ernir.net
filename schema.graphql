@@ -2,20 +2,24 @@ schema {
   query: Query
 }
 
+scalar Date
+
 type GalleryType {
   id: ID!
   name: String!
+  identifier: String!
+  startDate: Date
   photoSet: [PhotoType!]!
 }
 
 type PhotoType {
   id: ID!
   image: String!
+  width: Int!
+  height: Int!
+  url: String
   description: String!
   gallery: GalleryType!
-  url: String
-  width: Int
-  height: Int
 }
 
 type Query {

@@ -2,11 +2,13 @@ import React from "react";
 import Gallery from "react-photo-gallery";
 
 export interface PersonalGalleryProps {
+  identifier: string;
   name: string;
   photoSet: { url: string; width: number; height: number }[];
 }
 
 export const PersonalGallery: React.FC<PersonalGalleryProps> = ({
+  identifier,
   name,
   photoSet,
 }) => {
@@ -16,8 +18,8 @@ export const PersonalGallery: React.FC<PersonalGalleryProps> = ({
     height: photo.height,
   }));
   return (
-    <div>
-      <h2>{name}</h2>
+    <div className="personal-gallery">
+      <h2 id={identifier}>{name}</h2>
       <Gallery photos={photos} />
     </div>
   );

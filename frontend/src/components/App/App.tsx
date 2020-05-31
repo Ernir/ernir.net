@@ -6,7 +6,7 @@ import { PersonalGalleryList } from "../PersonalGalleryList/PersonalGalleryList"
 
 const App: React.FC = () => {
   return (
-    <div>
+    <div className="container">
       <Switch>
         <Route exact path="/">
           <div className="home">
