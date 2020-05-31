@@ -37,6 +37,9 @@ class Photo(models.Model):
     def __str__(self):
         return self.description
 
+    class Meta:
+        ordering = ("image",)
+
 
 @receiver(post_save, sender=Photo)
 def update_photo_url(sender, instance: Photo, **kwargs):
