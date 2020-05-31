@@ -4,6 +4,11 @@ schema {
 
 scalar Date
 
+type FrontPageSectionType {
+  id: ID!
+  mainText: String!
+}
+
 type GalleryType {
   id: ID!
   name: String!
@@ -23,6 +28,7 @@ type PhotoType {
 }
 
 type Query {
+  allFrontpageSections: [FrontPageSectionType]
   gallery(identifier: String): GalleryType
   allGalleries: [GalleryType]
   allPhotos: [PhotoType]

@@ -4,6 +4,7 @@ import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 import { PersonalGalleryList } from "../PersonalGalleryList/PersonalGalleryList";
 import { PersonalGallery } from "../PersonalGallery/PersonalGallery";
+import { Home } from "../Home/Home";
 
 const App: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path="/">
           <div className="home">
-            <h2>Home</h2>
+            <Home />
           </div>
         </Route>
         <Route path="/photos/:identifier" children={<PersonalGallery />} />

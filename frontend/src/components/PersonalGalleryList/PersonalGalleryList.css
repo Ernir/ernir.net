@@ -3,10 +3,10 @@
     margin: 0 auto;
 }
 
-h2 {
+.personal-galleries h2 {
     text-align: center;
 }
 
-dt {
+.personal-galleries dt {
     margin: 1em 0;
 }
