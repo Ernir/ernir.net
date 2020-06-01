@@ -7,6 +7,7 @@ scalar Date
 type FrontPageSectionType {
   id: ID!
   mainText: String!
+  theOrder: Int!
 }
 
 type GalleryType {
@@ -25,6 +26,7 @@ type PhotoType {
   url: String
   description: String!
   gallery: GalleryType!
+  src: String
 }
 
 type Query {

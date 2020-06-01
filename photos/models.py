@@ -30,7 +30,6 @@ class Photo(models.Model):
     # Fields of the image, stored as part of the model for more efficient access.
     width = models.IntegerField()
     height = models.IntegerField()
-    url = models.URLField(null=True, max_length=1024)
     # A human-readable description of the photo.
     description = models.TextField()
     # The single gallery this photo belongs to.
@@ -41,14 +40,3 @@ class Photo(models.Model):
 
     class Meta:
         ordering = ("image",)
-
-
-@receiver(post_save, sender=Photo)
-def update_photo_url(sender, instance: Photo, **kwargs):
-    """
-    Makes the URL of a photo available on the model object itself, so it won't require remote access.
-    Done post-save so the provided URL is final.
-    """
-    if instance.url is None:
-        instance.url = instance.image.url
-        instance.save()

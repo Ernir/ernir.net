@@ -11,6 +11,12 @@ class GalleryType(DjangoObjectType):
 
 
 class PhotoType(DjangoObjectType):
+
+    src = graphene.String()
+
+    def resolve_src(self, info, **kwargs):
+        return self.image.url
+
     class Meta:
         model = Photo
 

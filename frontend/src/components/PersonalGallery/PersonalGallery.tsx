@@ -13,7 +13,7 @@ const GET_GALLERY = gql`
       photoSet {
         width
         height
-        url
+        src
       }
     }
   }
@@ -29,22 +29,13 @@ export const PersonalGallery: React.FC = () => {
   if (error) {
     return <div>Error! ${error.message}</div>;
   }
-  const photos = data.gallery.photoSet.map(
-    (photo: { url: string; width: number; height: number }) => {
-      return {
-        src: photo.url,
-        width: photo.width,
-        height: photo.height,
-      };
-    }
-  );
   return (
     <div className="personal-gallery">
       <h2 id={identifier}>
-        <Link to={"/photos"}>Photos</Link> >{" "}
+        <Link to={"/photos"}>Photos</Link> >
         <Link to={url}>{data.gallery.name}</Link>
       </h2>
-      <Gallery photos={photos} />
+      <Gallery photos={data.gallery.photoSet} />
     </div>
   );
 };

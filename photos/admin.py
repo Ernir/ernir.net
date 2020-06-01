@@ -11,4 +11,4 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    readonly_fields = ("width", "height", "url")
+    readonly_fields = ("width", "height")
