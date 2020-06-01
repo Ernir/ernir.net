@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
 import { PersonalGalleryList } from "../PersonalGalleryList/PersonalGalleryList";
 import { PersonalGallery } from "../PersonalGallery/PersonalGallery";
