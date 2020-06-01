@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { useRouteMatch } from "react-router";
 import { Link } from "react-router-dom";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
 const GET_GALLERIES = gql`
   query {
@@ -18,7 +19,16 @@ export const PersonalGalleryList: React.FC = () => {
   const { loading, error, data } = useQuery(GET_GALLERIES);
   let { path } = useRouteMatch();
 
-  if (loading) return <div>"Loading..."</div>;
+  if (loading) {
+    return (
+      <div className="personal-galleries">
+        <h2>
+          <Link to={"/photos"}>Photos</Link>
+        </h2>
+        <LoadingSpinner />
+      </div>
+    );
+  }
   if (error) {
     return <div>Error! ${error.message}</div>;
   }
