@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "graphene_django",
     "markdownx",
     "adminsortable",
+    "asylum",
     "homepage",
     "photos",
 ]
