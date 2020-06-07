@@ -62,6 +62,22 @@ class YearType(DjangoObjectType):
 
 class Query(object):
     years = graphene.List(YearType)
+    total_granted = graphene.Field(
+        AggregateType, description="The number of all known people granted asylum"
+    )
+    total_not_granted = graphene.Field(
+        AggregateType, description="The number of all known people not granted asylum"
+    )
 
     def resolve_years(self, info, **kwargs):
         return Year.objects.filter(visible=True).all()
+
+    def resolve_total_granted(self, info, **kwargs):
+        return AgeGenderGroup.objects.filter(status__in=GRANTED_STATUSES).aggregate(
+            men=Sum("men"), women=Sum("women"), boys=Sum("boys"), girls=Sum("girls")
+        )
+
+    def resolve_total_not_granted(self, info, **kwargs):
+        return AgeGenderGroup.objects.exclude(status__in=GRANTED_STATUSES).aggregate(
+            men=Sum("men"), women=Sum("women"), boys=Sum("boys"), girls=Sum("girls")
+        )

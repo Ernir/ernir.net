@@ -61,6 +61,8 @@ type Query {
   allGalleries: [GalleryType]
   allPhotos: [PhotoType]
   years: [YearType]
+  totalGranted: AggregateType
+  totalNotGranted: AggregateType
 }
 
 type YearType {
