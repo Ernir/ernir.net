@@ -2,6 +2,33 @@ schema {
   query: Query
 }
 
+enum AgeGenderGroupStatus {
+  GRANTED
+  ADDITIONAL
+  HUMANITARIAN
+  REJECTED
+  DUBLIN
+  GRANTED_ELSEWHERE
+  OTHER
+}
+
+type AgeGenderGroupType {
+  id: ID!
+  men: Int
+  women: Int
+  boys: Int
+  girls: Int
+  status: AgeGenderGroupStatus!
+  year: YearType!
+}
+
+type AggregateType {
+  men: Int
+  women: Int
+  boys: Int
+  girls: Int
+}
+
 scalar Date
 
 type FrontPageSectionType {
@@ -23,7 +50,6 @@ type PhotoType {
   image: String!
   width: Int!
   height: Int!
-  url: String
   description: String!
   gallery: GalleryType!
   src: String
@@ -34,4 +60,15 @@ type Query {
   gallery(identifier: String): GalleryType
   allGalleries: [GalleryType]
   allPhotos: [PhotoType]
+  years: [YearType]
+}
+
+type YearType {
+  id: ID!
+  startingDate: Date!
+  visible: Boolean!
+  agegendergroupSet: [AgeGenderGroupType!]!
+  year: Int
+  granted: AggregateType
+  notGranted: AggregateType
 }

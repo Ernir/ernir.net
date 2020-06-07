@@ -5,8 +5,8 @@ from django.dispatch import receiver
 
 
 class Year(models.Model):
-    # January 1st of the year in question
-    starting_date = models.DateField()
+    starting_date = models.DateField(help_text="January 1st of the year in question")
+    visible = models.BooleanField(help_text="Whether to expose this year to clients")
 
     def __str__(self):
         return str(self.starting_date.year)
@@ -26,17 +26,28 @@ class Statuses(models.TextChoices):
 
 
 class AgeGenderGroup(models.Model):
-    """
-    A group of asylum seekers, consisting of the four types of people (I know, right?) recognized by the Icelandic Directorate of Immigration: men, women, boys and girls.
-    """
-
-    men = models.PositiveIntegerField(null=True, blank=False)
-    women = models.PositiveIntegerField(null=True, blank=False)
-    boys = models.PositiveIntegerField(null=True, blank=False)
-    girls = models.PositiveIntegerField(null=True, blank=False)
+    men = models.PositiveIntegerField(
+        null=True, blank=False, help_text="The number of men in this age-gender group"
+    )
+    women = models.PositiveIntegerField(
+        null=True, blank=False, help_text="The number of women in this age-gender group"
+    )
+    boys = models.PositiveIntegerField(
+        null=True,
+        blank=False,
+        help_text="The number of non-adult boys in this age-gender group",
+    )
+    girls = models.PositiveIntegerField(
+        null=True,
+        blank=False,
+        help_text="The number of non-adult girls in this age-gender group",
+    )
 
     status = models.CharField(
-        max_length=50, choices=Statuses.choices, default=Statuses.GRANTED,
+        max_length=50,
+        choices=Statuses.choices,
+        default=Statuses.GRANTED,
+        help_text="One of the final states of an asylum application as defined by the Directorate of Immigration",
     )
     year = models.ForeignKey(Year, on_delete=models.CASCADE)
 
