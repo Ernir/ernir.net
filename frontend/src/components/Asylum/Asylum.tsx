@@ -1,13 +1,13 @@
 import React from "react";
 import "./Asylum.css";
-import { ReactComponent as Couple } from "./couple.svg";
-import { ReactComponent as CoupleChild } from "./couple-child.svg";
-import { ReactComponent as CoupleChildren } from "./couple-children.svg";
-import { ReactComponent as Man } from "./man.svg";
-import { ReactComponent as ManChild } from "./man-child.svg";
-import { ReactComponent as Woman } from "./woman.svg";
-import { ReactComponent as WomanChild } from "./woman-child.svg";
-import { ReactComponent as WomanChildren } from "./woman-children.svg";
+import { ReactComponent as Couple } from "./svg/couple.svg";
+import { ReactComponent as CoupleChild } from "./svg/couple-child.svg";
+import { ReactComponent as CoupleChildren } from "./svg/couple-children.svg";
+import { ReactComponent as Man } from "./svg/man.svg";
+import { ReactComponent as ManChild } from "./svg/man-child.svg";
+import { ReactComponent as Woman } from "./svg/woman.svg";
+import { ReactComponent as WomanChild } from "./svg/woman-child.svg";
+import { ReactComponent as WomanChildren } from "./svg/woman-children.svg";
 import { shuffle } from "../../utils";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
@@ -80,7 +80,9 @@ class PeopleGroup {
     while (updated.hasPeople()) {
       addGroup(ImageGroup.randomGroup());
     }
-    return shuffle(peopleComponents);
+    return shuffle(peopleComponents).map((svg, i) => (
+      <span key={i}>{svg}</span>
+    ));
   }
 }
 
