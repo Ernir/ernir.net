@@ -1,6 +1,6 @@
 import graphene
-from django.db.models import Sum
-from graphene import ObjectType
+from django.db.models import Sum, Max
+from graphene import ObjectType, DateTime
 
 from graphene_django.types import DjangoObjectType
 
@@ -68,6 +68,9 @@ class Query(object):
     total_not_granted = graphene.Field(
         AggregateType, description="The number of all known people not granted asylum"
     )
+    updated_at = graphene.Field(
+        DateTime, description="The most recent update time of any group of people"
+    )
 
     def resolve_years(self, info, **kwargs):
         return Year.objects.filter(visible=True).all()
@@ -81,3 +84,8 @@ class Query(object):
         return AgeGenderGroup.objects.exclude(status__in=GRANTED_STATUSES).aggregate(
             men=Sum("men"), women=Sum("women"), boys=Sum("boys"), girls=Sum("girls")
         )
+
+    def resolve_updated_at(self, info, **kwargs):
+        return AgeGenderGroup.objects.aggregate(updated_at=Max("updated_at"))[
+            "updated_at"
+        ]

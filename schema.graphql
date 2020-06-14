@@ -20,6 +20,7 @@ type AgeGenderGroupType {
   girls: Int
   status: AgeGenderGroupStatus!
   year: YearType!
+  updatedAt: DateTime!
 }
 
 type AggregateType {
@@ -30,6 +31,8 @@ type AggregateType {
 }
 
 scalar Date
+
+scalar DateTime
 
 type FrontPageSectionType {
   id: ID!
@@ -63,6 +66,7 @@ type Query {
   years: [YearType]
   totalGranted: AggregateType
   totalNotGranted: AggregateType
+  updatedAt: DateTime
 }
 
 type YearType {

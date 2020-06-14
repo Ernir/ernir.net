@@ -50,6 +50,7 @@ class AgeGenderGroup(models.Model):
         help_text="One of the final states of an asylum application as defined by the Directorate of Immigration",
     )
     year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(

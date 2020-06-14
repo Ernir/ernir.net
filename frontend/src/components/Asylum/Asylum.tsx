@@ -142,6 +142,7 @@ const GET_PEOPLE = gql`
       boys
       girls
     }
+    updatedAt
   }
 `;
 
@@ -177,6 +178,9 @@ export const Asylum: React.FC = () => {
       <h2>Granted</h2>
       <p>Granted, granted for humanitarian reasons</p>
       {people.granted.render()}
+      <p>
+        Latest update: {new Date(data.updatedAt).toLocaleDateString("is-IS")}.
+      </p>
     </div>
   );
 };
