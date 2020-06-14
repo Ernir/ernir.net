@@ -2,11 +2,12 @@ import graphene
 
 import homepage.schema
 import photos.schema
+import asylum.schema
 
 
-class Query(photos.schema.Query, homepage.schema.Query, graphene.ObjectType):
-    # This class will inherit from multiple Queries
-    # as we begin to add more apps to our project
+class Query(
+    asylum.schema.Query, photos.schema.Query, homepage.schema.Query, graphene.ObjectType
+):
     pass
 
 

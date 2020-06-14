@@ -3,6 +3,7 @@ import "./Home.css";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import ReactMarkdown from "react-markdown";
+import { Asylum } from "../Asylum/Asylum";
 
 const GET_HOME = gql`
   query {
@@ -18,7 +19,11 @@ export const Home: React.FC = () => {
   if (error) {
     return <div>Error! ${error.message}</div>;
   }
-  return data.allFrontpageSections.map((section: { mainText: string }) => (
-    <ReactMarkdown source={section.mainText} />
-  ));
+  return (
+    <div className={"home"}>
+      {data.allFrontpageSections.map((section: { mainText: string }) => (
+        <ReactMarkdown source={section.mainText} />
+      ))}
+    </div>
+  );
 };

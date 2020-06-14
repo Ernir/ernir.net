@@ -2,7 +2,7 @@ import graphene
 
 from graphene_django.types import DjangoObjectType
 
-from .models import FrontPageSection
+from homepage.models import FrontPageSection
 
 
 class FrontPageSectionType(DjangoObjectType):
