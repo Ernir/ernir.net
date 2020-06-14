@@ -24,7 +24,6 @@ export const Home: React.FC = () => {
       {data.allFrontpageSections.map((section: { mainText: string }) => (
         <ReactMarkdown source={section.mainText} />
       ))}
-      <Asylum />
     </div>
   );
 };
