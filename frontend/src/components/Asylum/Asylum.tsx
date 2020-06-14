@@ -9,6 +9,9 @@ import { ReactComponent as Woman } from "./woman.svg";
 import { ReactComponent as WomanChild } from "./woman-child.svg";
 import { ReactComponent as WomanChildren } from "./woman-children.svg";
 import { shuffle } from "../../utils";
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
 /**
  * A group consisting of the four types of people (I know, right?) recognized by the Icelandic Directorate of Immigration: men, women, boys and girls.
@@ -125,12 +128,44 @@ class ImageGroup {
   }
 }
 
-const people: { notGranted: PeopleGroup; granted: PeopleGroup } = {
-  granted: new PeopleGroup(164, 107, 55, 50),
-  notGranted: new PeopleGroup(568 - 164, 255 - 107, 159 - 55, 141 - 50),
-};
+const GET_PEOPLE = gql`
+  query {
+    totalGranted {
+      men
+      women
+      boys
+      girls
+    }
+    totalNotGranted {
+      men
+      women
+      boys
+      girls
+    }
+  }
+`;
 
 export const Asylum: React.FC = () => {
+  const { loading, error, data } = useQuery(GET_PEOPLE);
+  if (loading) return <LoadingSpinner />;
+  if (error) {
+    return <div>Error! ${error.message}</div>;
+  }
+  const { totalGranted, totalNotGranted } = data;
+  const people: { notGranted: PeopleGroup; granted: PeopleGroup } = {
+    granted: new PeopleGroup(
+      totalGranted.men,
+      totalGranted.women,
+      totalGranted.boys,
+      totalGranted.girls
+    ),
+    notGranted: new PeopleGroup(
+      totalNotGranted.men,
+      totalNotGranted.women,
+      totalNotGranted.boys,
+      totalNotGranted.girls
+    ),
+  };
   return (
     <div className={"asylum"}>
       <h2>Not Granted</h2>
