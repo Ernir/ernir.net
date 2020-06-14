@@ -171,6 +171,21 @@ export const Asylum: React.FC = () => {
   };
   return (
     <div className={"asylum"}>
+      <h1>Asylum Seekers in Iceland</h1>
+      <p>
+        The Icelandic Directorate of Immigration processes hundreds of asylum
+        applications each year. The cold, hard statistics on those applications
+        are{" "}
+        <a href="https://www.utl.is/index.php/um-utlendingastofnun/toelfraedhi/toelfraedhi-verndarsvidhs">
+          presented on their website
+        </a>
+        , including breakdowns by gender and age group - as well as whether the
+        Directorate deigned to accept or reject the request for help.
+      </p>
+      <p>
+        This is what the people applying since 2018 could look like. The family
+        relations depicted here are fictional, but the people are not.
+      </p>
       <h2>Not Granted</h2>
       <p>
         Asylum denied, Dublin regulation deportation, asylum granted elsewhere,
@@ -180,9 +195,6 @@ export const Asylum: React.FC = () => {
       <h2>Granted</h2>
       <p>Granted, granted for humanitarian reasons</p>
       {people.granted.render()}
-      <p>
-        Latest update: {new Date(data.updatedAt).toLocaleDateString("is-IS")}.
-      </p>
     </div>
   );
 };
