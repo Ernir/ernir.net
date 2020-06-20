@@ -23,10 +23,10 @@ from django.conf import settings
 from ernirnet.redirects import vtp_redirect, blog_redirect
 
 urlpatterns = [
-    path("vanciantopsionics/", vtp_redirect),
-    path("blog/", blog_redirect),
-    path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=settings.DEBUG))),
-    path("admin/", admin.site.urls),
+    path("vanciantopsionics", vtp_redirect),
+    path("blog", blog_redirect),
+    path("graphql", csrf_exempt(GraphQLView.as_view(graphiql=settings.DEBUG))),
+    path("admin", admin.site.urls),
     path("markdownx/", include("markdownx.urls")),
     re_path(".*", TemplateView.as_view(template_name="index.html")),
 ]
