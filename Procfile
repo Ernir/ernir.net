@@ -1,1 +1,1 @@
-web: gunicorn ernirnet/wsgi.wsgi
+web: gunicorn ernirnet.wsgi
