@@ -12,7 +12,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: "http://localhost:8000/graphql/",
   headers: { "Content-Type": "application/json; charset=utf-8" },
 });
 

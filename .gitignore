@@ -7,4 +7,5 @@ venv
 
 __pycache__
 *.pyc
-staticfiles
+staticfiles/*
+!staticfiles/README.md
