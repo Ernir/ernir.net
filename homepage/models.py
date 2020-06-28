@@ -4,8 +4,8 @@ from markdownx.models import MarkdownxField
 
 
 class SectionCategory(models.TextChoices):
-    FRONT_PAGE = "FRONT_PAGE", "Front page section"
-    PROJECT = "PROJECT", "Project description"
+    FRONT_PAGE = "FRONT_PAGE", "Front page sections"
+    PROJECTS = "PROJECTS", "Project sections"
 
 
 class Section(SortableMixin):

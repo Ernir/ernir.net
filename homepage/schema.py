@@ -10,8 +10,17 @@ class SectionType(DjangoObjectType):
         model = Section
 
 
-class Query(object):
-    all_frontpage_sections = graphene.List(SectionType)
+class SectionCategoryType(graphene.ObjectType):
+    name = graphene.String()
+    label = graphene.String()
 
-    def resolve_all_frontpage_sections(self, info, **kwargs):
-        return Section.objects.filter(category=SectionCategory.FRONT_PAGE).all()
+
+class Query(object):
+    categories = graphene.List(SectionCategoryType, category_name=graphene.String())
+    sections = graphene.List(SectionType, category=graphene.String())
+
+    def resolve_categories(self, info):
+        return SectionCategory
+
+    def resolve_sections(self, info, category):
+        return Section.objects.filter(category=category).all()

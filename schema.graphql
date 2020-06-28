@@ -34,12 +34,6 @@ scalar Date
 
 scalar DateTime
 
-type FrontPageSectionType {
-  id: ID!
-  mainText: String!
-  theOrder: Int!
-}
-
 type GalleryType {
   id: ID!
   name: String!
@@ -59,7 +53,8 @@ type PhotoType {
 }
 
 type Query {
-  allFrontpageSections: [FrontPageSectionType]
+  categories(categoryName: String): [SectionCategoryType]
+  sections(category: String): [SectionType]
   gallery(identifier: String): GalleryType
   allGalleries: [GalleryType]
   allPhotos: [PhotoType]
@@ -67,6 +62,23 @@ type Query {
   totalGranted: AggregateType
   totalNotGranted: AggregateType
   updatedAt: DateTime
+}
+
+enum SectionCategory {
+  FRONT_PAGE
+  PROJECTS
+}
+
+type SectionCategoryType {
+  name: String
+  label: String
+}
+
+type SectionType {
+  id: ID!
+  mainText: String!
+  category: SectionCategory!
+  theOrder: Int!
 }
 
 type YearType {
