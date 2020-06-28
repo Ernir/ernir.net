@@ -1,9 +1,9 @@
 from adminsortable.admin import SortableAdmin
 from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
-from .models import FrontPageSection
+from .models import Section
 
 
-@admin.register(FrontPageSection)
-class FrontPageAdmin(SortableAdmin, MarkdownxModelAdmin):
+@admin.register(Section)
+class SectionAdmin(SortableAdmin, MarkdownxModelAdmin):
     pass
