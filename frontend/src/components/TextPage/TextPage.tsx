@@ -20,7 +20,9 @@ export const TextPage: React.FC<TextPageProps> = (props) => {
   const { loading, error, data } = useQuery(GET_SECTIONS, {
     variables: { category: props.category },
   });
-  if (loading) return <div>"Loading..."</div>;
+  if (loading) {
+    return <div>"Loading..."</div>;
+  }
   if (error) {
     return <div>Error! ${error.message}</div>;
   }
