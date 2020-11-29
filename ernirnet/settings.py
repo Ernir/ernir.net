@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "asylum",
     "homepage",
     "photos",
+    "recipes",
 ]
 
 # Special CORS handling for local development
