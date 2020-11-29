@@ -2,16 +2,25 @@ import graphene
 
 from graphene_django.types import DjangoObjectType
 
-from homepage.models import FrontPageSection
+from homepage.models import Section, SectionCategory
 
 
-class FrontPageSectionType(DjangoObjectType):
+class SectionType(DjangoObjectType):
     class Meta:
-        model = FrontPageSection
+        model = Section
+
+
+class SectionCategoryType(graphene.ObjectType):
+    name = graphene.String()
+    label = graphene.String()
 
 
 class Query(object):
-    all_frontpage_sections = graphene.List(FrontPageSectionType)
+    categories = graphene.List(SectionCategoryType, category_name=graphene.String())
+    sections = graphene.List(SectionType, category=graphene.String())
 
-    def resolve_all_frontpage_sections(self, info, **kwargs):
-        return FrontPageSection.objects.all()
+    def resolve_categories(self, info):
+        return SectionCategory
+
+    def resolve_sections(self, info, category):
+        return Section.objects.filter(category=category).all()

@@ -150,7 +150,9 @@ const GET_PEOPLE = gql`
 
 export const Asylum: React.FC = () => {
   const { loading, error, data } = useQuery(GET_PEOPLE);
-  if (loading) return <LoadingSpinner />;
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   if (error) {
     return <div>Error! ${error.message}</div>;
   }
@@ -184,7 +186,9 @@ export const Asylum: React.FC = () => {
       </p>
       <p>
         This is what the people applying since 2018 could look like. The family
-        relations depicted here are fictional, but the people are not.
+        relations depicted here are fictional, but the people are not. Each
+        figure represents a real man, woman, boy or girl, as defined by the
+        Directorate's terrifying accounting.
       </p>
       <h2>Not Granted</h2>
       <p>

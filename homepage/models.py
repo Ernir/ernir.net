@@ -3,8 +3,23 @@ from django.db import models
 from markdownx.models import MarkdownxField
 
 
-class FrontPageSection(SortableMixin):
+class SectionCategory(models.TextChoices):
+    FRONT_PAGE = "FRONT_PAGE", "Front page sections"
+    PROJECTS = "PROJECTS", "Project sections"
+
+
+class Section(SortableMixin):
+    """
+    A general type of Markdown-backed HTML section to be shown on the web
+    """
+
     main_text = MarkdownxField()
+    category = models.CharField(
+        max_length=50,
+        choices=SectionCategory.choices,
+        default=SectionCategory.FRONT_PAGE,
+        help_text="A type of section, defining where it should be shown",
+    )
 
     # A field the model should be ordered by
     the_order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
