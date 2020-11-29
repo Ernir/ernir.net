@@ -42,7 +42,7 @@ export const PersonalGallery: React.FC = () => {
   return (
     <div className="personal-gallery">
       <h2 id={identifier}>
-        <Link to={"/photos"}>Photos</Link> >{" "}
+        <Link to={"/photos"}>Photos</Link> {">"}
         <Link to={url}>{data.gallery.name}</Link>
       </h2>
       <Gallery photos={data.gallery.photoSet} />
