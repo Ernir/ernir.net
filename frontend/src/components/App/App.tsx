@@ -6,6 +6,7 @@ import { PersonalGalleryList } from "../PersonalGalleryList/PersonalGalleryList"
 import { PersonalGallery } from "../PersonalGallery/PersonalGallery";
 import { TextPage } from "../TextPage/TextPage";
 import { Asylum } from "../Asylum/Asylum";
+import { RecipeList } from "../RecipeList/RecipeList";
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,9 @@ const App: React.FC = () => {
         <Route path="/photos/:identifier" children={<PersonalGallery />} />
         <Route path="/photos">
           <PersonalGalleryList />
+        </Route>
+        <Route path="/recipes">
+          <RecipeList />
         </Route>
       </Switch>
     </div>
