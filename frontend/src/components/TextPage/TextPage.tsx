@@ -3,6 +3,7 @@ import "./TextPage.css";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import ReactMarkdown from "react-markdown";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 
 const GET_SECTIONS = gql`
   query sections($category: String!) {
@@ -21,7 +22,11 @@ export const TextPage: React.FC<TextPageProps> = (props) => {
     variables: { category: props.category },
   });
   if (loading) {
-    return <div>"Loading..."</div>;
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
   }
   if (error) {
     return <div>Error! ${error.message}</div>;

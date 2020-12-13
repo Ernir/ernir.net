@@ -13,6 +13,7 @@ const GET_GALLERY = gql`
     recipe(slug: $slug) {
       id
       name
+      description
       ingredients {
         id
         amount
@@ -51,12 +52,14 @@ export const Recipe: React.FC = () => {
         <title>
           Ernir.net {">"} recipes {">"} {data.recipe.name}
         </title>
+        <meta name="description" content={data.recipe.description} />
       </Helmet>
       <h2 id={data.recipe.id}>
         <Link to={"/recipes"}>Recipes</Link> {"> "}
         <Link to={url}>{data.recipe.name}</Link>
       </h2>
       <section>
+        <p>{data.recipe.description}</p>
         <h2>Hráefni</h2>
         <dl>
           {data.recipe.ingredients.map(
