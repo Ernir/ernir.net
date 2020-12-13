@@ -5,6 +5,7 @@ import gql from "graphql-tag";
 import { useRouteMatch } from "react-router";
 import { Link } from "react-router-dom";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const GET_RECIPES = gql`
   query {
@@ -35,6 +36,10 @@ export const RecipeList: React.FC = () => {
   }
   return (
     <div className="recipes">
+      <Helmet>
+        <title>Ernir.net {">"} recipes</title>
+        <meta name="description" content="Ernir & Hrefna's food recipes" />
+      </Helmet>
       <h2>
         <Link to={"/recipes"}>Recipes</Link>{" "}
       </h2>

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const GET_GALLERY = gql`
   query gallery($identifier: String!) {
@@ -41,6 +42,12 @@ export const PersonalGallery: React.FC = () => {
   }
   return (
     <div className="personal-gallery">
+      <Helmet>
+        <title>
+          Ernir.net {">"} photos {">"} {data.gallery.name}
+        </title>
+        <meta name="description" content={"Photos from " + data.gallery.name} />
+      </Helmet>
       <h2 id={identifier}>
         <Link to={"/photos"}>Photos</Link> {"> "}
         <Link to={url}>{data.gallery.name}</Link>

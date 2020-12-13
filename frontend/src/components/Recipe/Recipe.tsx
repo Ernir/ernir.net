@@ -6,6 +6,7 @@ import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
 import ReactMarkdown from "react-markdown";
+import { Helmet } from "react-helmet";
 
 const GET_GALLERY = gql`
   query recipe($slug: String!) {
@@ -34,8 +35,8 @@ export const Recipe: React.FC = () => {
   if (loading) {
     return (
       <div>
-        <h2 id={slug}>
-          <Link to={"/photos"}>Photos</Link>
+        <h2>
+          <Link to={"/recipes"}>Recipes</Link>
         </h2>
         <LoadingSpinner />
       </div>
@@ -46,6 +47,11 @@ export const Recipe: React.FC = () => {
   }
   return (
     <article>
+      <Helmet>
+        <title>
+          Ernir.net {">"} recipes {">"} {data.recipe.name}
+        </title>
+      </Helmet>
       <h2 id={data.recipe.id}>
         <Link to={"/recipes"}>Recipes</Link> {"> "}
         <Link to={url}>{data.recipe.name}</Link>

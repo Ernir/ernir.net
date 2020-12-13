@@ -5,6 +5,7 @@ import gql from "graphql-tag";
 import { useRouteMatch } from "react-router";
 import { Link } from "react-router-dom";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const GET_GALLERIES = gql`
   query {
@@ -34,6 +35,10 @@ export const PersonalGalleryList: React.FC = () => {
   }
   return (
     <div className="personal-galleries">
+      <Helmet>
+        <title>Ernir.net {">"} photos</title>
+        <meta name="description" content="Ernir's photo albums" />
+      </Helmet>
       <h2>
         <Link to={"/photos"}>Photos</Link>{" "}
       </h2>
