@@ -78,6 +78,7 @@ type RecipeType {
   id: ID!
   name: String!
   slug: String!
+  description: String!
   instructionText: String!
   ingredients: [IngredientType!]!
 }
@@ -95,6 +96,7 @@ type SectionCategoryType {
 type SectionType {
   id: ID!
   mainText: String!
+  description: String!
   category: SectionCategory!
   theOrder: Int!
 }

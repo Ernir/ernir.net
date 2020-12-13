@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Switch, Route, Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import { PersonalGalleryList } from "../PersonalGalleryList/PersonalGalleryList";
 import { PersonalGallery } from "../PersonalGallery/PersonalGallery";
@@ -12,6 +13,13 @@ import { Recipe } from "../Recipe/Recipe";
 const App: React.FC = () => {
   return (
     <div className="container">
+      <Helmet>
+        <title>Ernir.net</title>
+        <meta
+          name="description"
+          content="Eiríkur Ernir Þorsteinsson's personal homepage"
+        />
+      </Helmet>
       <nav>
         <dl>
           <dt>

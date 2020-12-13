@@ -7,6 +7,10 @@ from recipes.managers import FullRecipeManager
 class Recipe(models.Model):
     name = models.CharField(max_length=100, help_text="The name of this recipe")
     slug = models.SlugField()
+    description = models.CharField(
+        max_length=280,
+        help_text="A more extended introduction to what this recipe is all about",
+    )
     instruction_text = MarkdownxField()
 
     def __str__(self):

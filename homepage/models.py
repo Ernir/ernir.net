@@ -14,6 +14,7 @@ class Section(SortableMixin):
     """
 
     main_text = MarkdownxField()
+    description = models.CharField(max_length=280)
     category = models.CharField(
         max_length=50,
         choices=SectionCategory.choices,
