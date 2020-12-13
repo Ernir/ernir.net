@@ -11,9 +11,7 @@ import { HttpLink } from "apollo-link-http";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const cache = new InMemoryCache();
-const link = new HttpLink({
-  headers: { "Content-Type": "application/json; charset=utf-8" },
-});
+const link = new HttpLink();
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache,
