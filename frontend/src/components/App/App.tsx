@@ -6,6 +6,8 @@ import { PersonalGalleryList } from "../PersonalGalleryList/PersonalGalleryList"
 import { PersonalGallery } from "../PersonalGallery/PersonalGallery";
 import { TextPage } from "../TextPage/TextPage";
 import { Asylum } from "../Asylum/Asylum";
+import { RecipeList } from "../RecipeList/RecipeList";
+import { Recipe } from "../Recipe/Recipe";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +22,9 @@ const App: React.FC = () => {
           </dt>
           <dt>
             <Link to="/projects">Projects</Link>
+          </dt>
+          <dt>
+            <Link to="/recipes">Recipes</Link>
           </dt>
         </dl>
       </nav>
@@ -37,6 +42,10 @@ const App: React.FC = () => {
         <Route path="/photos/:identifier" children={<PersonalGallery />} />
         <Route path="/photos">
           <PersonalGalleryList />
+        </Route>
+        <Route path="/recipes/:slug" children={<Recipe />} />
+        <Route path="/recipes">
+          <RecipeList />
         </Route>
       </Switch>
     </div>

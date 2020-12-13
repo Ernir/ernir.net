@@ -42,6 +42,14 @@ type GalleryType {
   photoSet: [PhotoType!]!
 }
 
+type IngredientType {
+  id: ID!
+  recipe: RecipeType!
+  name: String!
+  amount: Int!
+  unit: UnitType!
+}
+
 type PhotoType {
   id: ID!
   image: String!
@@ -53,6 +61,8 @@ type PhotoType {
 }
 
 type Query {
+  recipe(slug: String): RecipeType
+  recipes: [RecipeType]
   categories(categoryName: String): [SectionCategoryType]
   sections(category: String): [SectionType]
   gallery(identifier: String): GalleryType
@@ -62,6 +72,14 @@ type Query {
   totalGranted: AggregateType
   totalNotGranted: AggregateType
   updatedAt: DateTime
+}
+
+type RecipeType {
+  id: ID!
+  name: String!
+  slug: String!
+  instructionText: String!
+  ingredients: [IngredientType!]!
 }
 
 enum SectionCategory {
@@ -79,6 +97,12 @@ type SectionType {
   mainText: String!
   category: SectionCategory!
   theOrder: Int!
+}
+
+type UnitType {
+  id: ID!
+  name: String!
+  recipeingredientSet: [IngredientType!]!
 }
 
 type YearType {

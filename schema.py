@@ -1,12 +1,17 @@
 import graphene
 
+import asylum.schema
 import homepage.schema
 import photos.schema
-import asylum.schema
+import recipes.schema
 
 
 class Query(
-    asylum.schema.Query, photos.schema.Query, homepage.schema.Query, graphene.ObjectType
+    asylum.schema.Query,
+    photos.schema.Query,
+    homepage.schema.Query,
+    recipes.schema.Query,
+    graphene.ObjectType,
 ):
     pass
 
