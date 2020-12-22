@@ -1,3 +1,7 @@
+.recipes {
+    max-width: 40rem;
+}
+
 .recipes dt {
     margin: 1em 0;
 }
