@@ -1,2 +1,6 @@
 .personal-gallery{
 }
+
+article {
+    max-width: 40rem;
+}

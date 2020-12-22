@@ -12,6 +12,7 @@ const GET_RECIPES = gql`
     recipes {
       id
       name
+      description
       slug
     }
   }
@@ -45,10 +46,16 @@ export const RecipeList: React.FC = () => {
       </h2>
       <dl>
         {data.recipes.map(
-          (recipe: { id: number; name: string; slug: string }) => {
+          (recipe: {
+            id: number;
+            name: string;
+            slug: string;
+            description: string;
+          }) => {
             return (
               <dt key={recipe.id}>
-                <Link to={`${path}/${recipe.slug}`}>{recipe.name}</Link>
+                <Link to={`${path}/${recipe.slug}`}>{recipe.name}</Link>{" "}
+                {recipe.description}
               </dt>
             );
           }
