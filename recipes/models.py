@@ -36,7 +36,7 @@ class RecipeIngredient(models.Model):
         Recipe, on_delete=models.CASCADE, related_name="ingredients"
     )
     name = models.CharField(max_length=100, help_text="The name of this ingredient")
-    amount = models.PositiveIntegerField()
+    amount = models.DecimalField(decimal_places=2, max_digits=10)
     unit = models.ForeignKey(
         Unit, db_index=True, to_field="name", on_delete=models.CASCADE, default="stk"
     )
