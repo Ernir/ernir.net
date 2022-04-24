@@ -9,6 +9,7 @@ import { TextPage } from "../TextPage/TextPage";
 import { Asylum } from "../Asylum/Asylum";
 import { RecipeList } from "../RecipeList/RecipeList";
 import { Recipe } from "../Recipe/Recipe";
+import { RestaurantMap } from "../RestaurantMap/RestaurantMap";
 
 const App: React.FC = () => {
   return (
@@ -43,6 +44,9 @@ const App: React.FC = () => {
         </Route>
         <Route path="/projects/asylum">
           <Asylum />
+        </Route>
+        <Route path="/projects/restaurants">
+          <RestaurantMap />
         </Route>
         <Route path="/projects">
           <TextPage category={"PROJECTS"} />

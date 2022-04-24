@@ -46,7 +46,7 @@ type IngredientType {
   id: ID!
   recipe: RecipeType!
   name: String!
-  amount: Int!
+  amount: Float!
   unit: UnitType!
 }
 
@@ -61,6 +61,7 @@ type PhotoType {
 }
 
 type Query {
+  restaurants: [RestaurantType]
   recipe(slug: String): RecipeType
   recipes: [RecipeType]
   categories(categoryName: String): [SectionCategoryType]
@@ -81,6 +82,20 @@ type RecipeType {
   description: String!
   instructionText: String!
   ingredients: [IngredientType!]!
+}
+
+type RestaurantType {
+  id: ID!
+  name: String!
+  address: String!
+  locationLat: Float!
+  locationLng: Float!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  googlePlaceId: String!
+  googleRating: Float!
+  googleUserRatingsCount: Int!
+  heatmapWeight: Float
 }
 
 enum SectionCategory {
