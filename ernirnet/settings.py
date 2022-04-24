@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "homepage",
     "photos",
     "recipes",
+    "restaurants",
 ]
 
 # Special CORS handling for local development
