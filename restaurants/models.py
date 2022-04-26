@@ -1,13 +1,19 @@
+from django.core.exceptions import ValidationError
 from django.utils import timezone
 
 from django.db import models
 
 
+def is_coordinate(value):
+    if not -90 < value < 90:
+        raise ValidationError(f"{value} must be in the closed range [-90:90]")
+
+
 class Restaurant(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=1000)
-    location_lat = models.FloatField()
-    location_lng = models.FloatField()
+    location_lat = models.FloatField(validators=[is_coordinate])
+    location_lng = models.FloatField(validators=[is_coordinate])
 
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -23,7 +23,7 @@ const GET_RESTAURANTS = gql`
 
 const containerStyle = {
   width: "100%",
-  height: "800px",
+  height: "1200px",
 };
 
 const center = {
