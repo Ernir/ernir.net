@@ -27,8 +27,8 @@ const containerStyle = {
 };
 
 const center = {
-  lat: 52.32587853655816,
-  lng: 4.882333537153177,
+  lat: 52.37122826789267,
+  lng: 4.8959858321307905
 };
 
 export const RestaurantMap: React.FC = () => {
@@ -53,7 +53,7 @@ export const RestaurantMap: React.FC = () => {
           </title>
           <meta name="description" content={"Restaurant heatmap"} />
         </Helmet>
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={15}>
+        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={13} >
           <HeatmapLayer
             data={data.restaurants.map(
               (restaurant: { locationLat: number; locationLng: number }) =>
